@@ -1,0 +1,26 @@
+# Core ML framework
+torch>=2.2.0
+torchvision>=0.17.0
+
+# ONNX ecosystem
+onnx>=1.16.0
+onnxruntime>=1.18.0
+onnxscript>=0.1.0  # requis par torch.onnx depuis torch>=2.5
+
+# Data processing
+numpy>=1.24.0,<2.0.0
+Pillow>=10.0.0
+
+# Benchmark utilities
+psutil>=5.9.0
+tqdm>=4.66.0
+
+# Visualization & reporting
+matplotlib>=3.8.0
+rich>=13.7.0
+
+# Dataset loading (HF datasets — pour ImageNet val ou Imagenette)
+datasets>=2.18.0
+
+# Notebooks
+jupyter>=1.0.0
