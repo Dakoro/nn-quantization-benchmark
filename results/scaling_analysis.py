@@ -13,7 +13,7 @@ Usage :
     uv run benchmark/run_benchmark.py --threads 8 --output results/bench_8t.json
 
     # Puis génère la figure de scaling :
-    uv run notebooks/scaling_analysis.py \\
+    uv run results/scaling_analysis.py \\
         results/bench_1t.json results/bench_4t.json results/bench_8t.json
 """
 from __future__ import annotations
@@ -76,9 +76,9 @@ def plot_scaling(benches: list[tuple[int, dict]], out_path: Path) -> None:
             linewidth=2, markersize=11, label=fmt,
         )
         # Annotations au-dessus de chaque point
-        for t, l in zip(threads_present, latencies):
+        for t, lat in zip(threads_present, latencies):
             axes[0].annotate(
-                f"{l:.2f} ms", xy=(t, l), xytext=(8, 6),
+                f"{lat:.2f} ms", xy=(t, lat), xytext=(8, 6),
                 textcoords="offset points", fontsize=8.5,
                 color=COLORS[fmt],
             )
@@ -101,11 +101,11 @@ def plot_scaling(benches: list[tuple[int, dict]], out_path: Path) -> None:
         threads_present = []
         speedups = []
         for t, d in benches:
-            l = _lookup_latency(d, fmt)
-            if l is None:
+            lat = _lookup_latency(d, fmt)
+            if lat is None:
                 continue
             threads_present.append(t)
-            speedups.append(lat_1t / l)
+            speedups.append(lat_1t / lat)
         axes[1].plot(
             threads_present, speedups,
             marker=MARKERS[fmt], color=COLORS[fmt],
@@ -152,9 +152,9 @@ def print_scaling_table(benches: list[tuple[int, dict]]) -> None:
 
     for fmt in formats:
         latencies = [_lookup_latency(d, fmt) for _, d in benches]
-        if any(l is None for l in latencies):
+        if any(lat is None for lat in latencies):
             continue
-        cells = [f"{l:.2f}" for l in latencies]
+        cells = [f"{lat:.2f}" for lat in latencies]
         scaling = latencies[0] / latencies[-1]
         efficiency = scaling / thread_counts[-1] * 100
         print(f"| {fmt} | " + " | ".join(cells) +

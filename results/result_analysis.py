@@ -206,7 +206,7 @@ def fig_per_class_heatmap(acc: dict, out_path: Path) -> None:
                     color=color, fontsize=10, fontweight="bold")
 
     ax.set_title("Top-1 accuracy par classe Imagenette × format (%)")
-    cbar = plt.colorbar(im, ax=ax, label="Top-1 (%)")
+    plt.colorbar(im, ax=ax, label="Top-1 (%)")
 
     plt.tight_layout()
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
