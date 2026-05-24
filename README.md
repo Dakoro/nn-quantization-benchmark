@@ -223,10 +223,9 @@ nn-quantization-benchmark/
 │   └── evaluate_accuracy.py       # Étape 5 : Top-1 / Top-5
 ├── results/
 │   ├── results_analysis.py        # Étape 6 : figures principales + tableau
-|    ├── scaling_analysis.py        # Bonus : scaling multi-thread
-|    ├── benchmark_results.json
+|   ├── scaling_analysis.py        # Bonus : scaling multi-thread
+|   ├── benchmark_results.json
 │   ├── bench_1t.json, bench_4t.json, bench_8t.json   # benchmarks par config
-
 │   ├── accuracy_results.json
 │   └── figures/                   # PNG générés
 ├── requirements.txt
