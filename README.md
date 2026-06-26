@@ -2,8 +2,6 @@
 
 > Pipeline complet de quantification post-entraînement (PTQ) de MobileNetV2 et benchmark sur les trois axes **précision**, **latence** et **empreinte mémoire**, dans la perspective d'un déploiement embarqué sur NPU.
 
-Projet portfolio réalisé en réponse à une offre d'alternance ingénieur IA embarquée (STMicroelectronics Grenoble, équipe Neural-ART / STM32 N6).
-
 ## TL;DR
 
 Sur MobileNetV2 quantifié INT8 statique avec calibration MinMax sur Imagenette, mesuré sur Intel i7-13700HX (Raptor Lake, AVX2 VNNI) :
